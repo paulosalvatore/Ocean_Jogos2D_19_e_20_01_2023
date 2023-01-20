@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     // TIPO_VARIAVEL NOME_VARIAVEL;
     Rigidbody2D rb;
 
+    SpriteRenderer spriteRend;
+
     // Para que uma variável fique exposta para a Unity, precisamos da
     // palavra "public", antes da declaração da variável
     // (Valor da variável é opcional)
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         // o Rigidbody do jogador em si
         rb = GetComponent<Rigidbody2D>();
         print(rb);
+        
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -101,6 +105,16 @@ public class Player : MonoBehaviour
             // new Vector2(0, jumpForce);
             // Com o Vector2 calculado, passamos ao AddForce
             rb.AddForce(Vector2.up * jumpForce);
+        }
+
+        // Virar a personagem de acordo com a direção do movimento
+        if (h < 0)
+        {
+            spriteRend.flipX = true;
+        }
+        else if (h > 0)
+        {
+            spriteRend.flipX = false;
         }
     }
 }
