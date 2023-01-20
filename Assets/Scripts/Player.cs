@@ -12,6 +12,17 @@ public class Player : MonoBehaviour
     // TIPO_VARIAVEL NOME_VARIAVEL;
     Rigidbody2D rb;
 
+    // Para que uma variável fique exposta para a Unity, precisamos da
+    // palavra "public", antes da declaração da variável
+    // (Valor da variável é opcional)
+    // TIPO_VARIAVEL NOME_VARIAVEL = VALOR;
+    // Tipos numéricos mais comuns: int (números inteiros) e
+    // float (números decimais)
+    // Lembrando que, no caso de variáveis públicas, o valor informado
+    // é apenas o valor inicial. Depois que a Unity carregar, precisamos
+    // alterar o valor pela Unity para que tenha efeito.
+    public float speed = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +60,7 @@ public class Player : MonoBehaviour
         // em dois eixos: X (laterais) e y (cima/baixo),
         // precisamos utilizar um Vector2, que tem x e y
         rb.velocity = new Vector2(
-            h,
+            h * speed,
             rb.velocity.y
         );
     }
