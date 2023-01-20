@@ -78,6 +78,17 @@ public class Player : MonoBehaviour
         // espaço, o botão A dos joysticks
         if (Input.GetButtonDown("Jump"))
         {
+            // Antes do pulo, queremos que o Rigidbody2D esteja
+            // com velocidade 0
+            // Ao somar uma força em uma velocidade 0, temos um valor
+            // absoluto para a nova velocidade
+            // Isso faz com que qualquer valor anterior da velocidade,
+            // seja desconsiderado quando o AddForce for executado.
+            rb.velocity = new Vector2(
+                rb.velocity.x,
+                0
+            );
+
             // Adicionamos uma força no Rigidbody2D
             // Essa força será o resultado de Vector2.up * jumpForce
             // Vector2.up é equivalente a new Vector2(0, 1), ou seja,
