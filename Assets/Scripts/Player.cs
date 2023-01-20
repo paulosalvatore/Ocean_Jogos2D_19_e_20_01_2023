@@ -25,6 +25,32 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Para aplicar uma movimentação lateral,
+        // devemos mover o eixo X.
+        // Além disso, precisamos detectar se o jogador
+        // está pressionando as setas esquerda/direita
+        // Para isso, a Unity tem a declaração:
+        // Input.GetAxis("EIXO_ESCOLHIDO")
+        // Os eixos disponíveis são:
+        // - Horizontal
+        // - Vertical
+        // Quando utilizamos Input.GetAxis("Horizontal"),
+        // o valor recebido é um número entre -1 e 1
+        // -1 -> Setinha para esquerda está sendo pressionada
+        // 1 -> Setinha para direita está sendo pressionada
 
+        var h = Input.GetAxis("Horizontal");
+
+        // Com o valor da direção do movimento, que foi obtido
+        // a partir das setinhas pressionadas, vamos aplicá-lo
+        // na velocidade do Rigidbody2D
+        // Fazemos isso através da declaração: rb.velocity
+        // Como a velocidade de um Rigidbody2D é medida
+        // em dois eixos: X (laterais) e y (cima/baixo),
+        // precisamos utilizar um Vector2, que tem x e y
+        rb.velocity = new Vector2(
+            h,
+            rb.velocity.y
+        );
     }
 }
