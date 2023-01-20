@@ -137,7 +137,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 373373987}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c1656a508b84df44f8800d21cbdcf28e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -21493,6 +21493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  jumpForce: 150
 --- !u!1 &1691222938
 GameObject:
   m_ObjectHideFlags: 0
