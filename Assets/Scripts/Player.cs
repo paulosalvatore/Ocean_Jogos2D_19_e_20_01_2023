@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
     // alterar o valor pela Unity para que tenha efeito.
     public float speed = 2;
 
+    // Definimos uma força inicial para o pulo
+    // Podemos configurar essa força direto pela Unity, por conta
+    // do "public"
+    public float jumpForce = 150;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +68,28 @@ public class Player : MonoBehaviour
             h * speed,
             rb.velocity.y
         );
+
+        // Precisamos detectar quando o jogador pretende pular
+        // Para isso, vamos aguardar a tecla "Barra de espaço"
+        // ser pressionada
+        // No lugar de checar se apenas uma tecla foi pressionada,
+        // podemos checar se um botão da Unity, foi pressionado
+        // O botão "Jump", por exemplo, detecta, além da barra de
+        // espaço, o botão A dos joysticks
+        if (Input.GetButtonDown("Jump"))
+        {
+            // Adicionamos uma força no Rigidbody2D
+            // Essa força será o resultado de Vector2.up * jumpForce
+            // Vector2.up é equivalente a new Vector2(0, 1), ou seja,
+            // 0 no X e 1 no Y
+            // Multiplicando o Vector2 por um float, temos um novo
+            // Vector2, com o valor aplicado.
+            // Portanto, o novo Vector2 será equivalente a:
+            // new Vector2(0 * jumpForce, 1 * jumpForce)
+            // Simplificando, temos:
+            // new Vector2(0, jumpForce);
+            // Com o Vector2 calculado, passamos ao AddForce
+            rb.AddForce(Vector2.up * jumpForce);
+        }
     }
 }
